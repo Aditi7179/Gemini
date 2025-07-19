@@ -11,21 +11,23 @@ app.post('/getResponse', (req, res) => {
   const genAI = new GoogleGenerativeAI('AIzaSyD3efMKORfpzYV5y8pyysqKspLKjD81l0M');
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  model.generateContent(req.body.question).then(result => {
-    console.log(result.response.text());
-    const response = result.response.text();
-    res.status(200).json({ response: response });
-  }).catch(err => {
-    console.log(err);
-    res.status(500).json({ error: err });
-  });
+  model.generateContent(req.body.question)
+    .then(result => {
+      const response = result.response.text();
+      console.log(response);
+      res.status(200).json({ response });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
 });
 
+// ✅ Correct order: (req, res)
 app.get('*', (req, res) => {
   res.status(404).json({
     msg: 'bad Request'
   });
 });
 
-// Export the app
 module.exports = app;
