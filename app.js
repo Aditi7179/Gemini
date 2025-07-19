@@ -21,12 +21,11 @@ app.post('/getResponse', (req, res) => {
   });
 });
 
-
-app.get('*',(res,req)=>{
+app.get('*', (req, res) => {
   res.status(404).json({
-    msg:'bad Request'
-  })
-})
-// Removed the extra model.generateContent(prompt)... block
+    msg: 'bad Request'
+  });
+});
 
+// Export the app
 module.exports = app;
