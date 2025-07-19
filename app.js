@@ -21,6 +21,12 @@ app.post('/getResponse', (req, res) => {
   });
 });
 
+
+app.use('*',()=>{
+  res.status(404).json({
+    msg:'bad Request'
+  })
+})
 // Removed the extra model.generateContent(prompt)... block
 
 module.exports = app;
