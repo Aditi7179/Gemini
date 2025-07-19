@@ -19,15 +19,17 @@ app.post('/getResponse', (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({ error: err });
-    });
-});
+      res.status(500).json({ 
+        error: err 
+      })
+    })
+})
 
-// ✅ Correct order: (req, res)
+
 app.get('*', (req, res) => {
   res.status(404).json({
-    msg: 'bad Request'
-  });
-});
+     msg: 'bad Request'
+     })
+})
 
 module.exports = app;
