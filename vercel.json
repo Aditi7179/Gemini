@@ -1,0 +1,12 @@
+{
+    "version": 2 ,
+    "name":"myapi",
+    "builds":[
+        {"src":"app.js","use":"@vercel/node"}
+
+    ],
+    "rputes":[
+        {"src":"/(.*)","dest":"/app.js"}
+    ]
+
+}
